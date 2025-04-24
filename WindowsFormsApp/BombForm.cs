@@ -130,7 +130,7 @@ namespace WindowsFormsApp
 
             strikeOne.Text = bomb.Strikes > 0 ? "X" : string.Empty;
             strikeTwo.Text = bomb.Strikes > 1 ? "X" : string.Empty;
-            if (bomb.IsExploded)
+            if (bomb.ShouldExplode)
             {
                 Application.Exit();
             }

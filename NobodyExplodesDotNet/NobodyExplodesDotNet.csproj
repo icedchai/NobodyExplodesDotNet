@@ -47,6 +47,7 @@
     <Compile Include="Enums\ButtonLabel.cs" />
     <Compile Include="Enums\IndicatorLabel.cs" />
     <Compile Include="Enums\ModuleColor.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Types\Bomb.cs" />
     <Compile Include="Types\Module.cs" />
     <Compile Include="Types\Modules\KeypadModule.cs" />
@@ -66,6 +67,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

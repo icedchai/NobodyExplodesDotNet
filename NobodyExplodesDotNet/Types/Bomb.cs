@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using NobodyExplodesDotNet.Extensions;
     using NobodyExplodesDotNet.Types.Modules;
     using NobodyExplodesDotNet.Types.Widgets;
 
@@ -11,6 +12,8 @@
     /// </summary>
     public class Bomb
     {
+        private static Random SharedRng => CommonFuncs.SharedRng;
+
         private static List<char> serialLetters = new List<char>
         {
             'A',
@@ -71,13 +74,13 @@
             int modules = 4;
             for (int i = 0; i < modules; i++)
             {
-                Modules.Add(CommonFuncs.GetNewModule(this));
+                Modules.Add(Module.GetNewModule(this));
             }
 
             int widgets = 5;
             for (int i = 0; i < widgets; i++)
             {
-                Widgets.Add(CommonFuncs.GetNewWidget(this));
+                Widgets.Add(Widget.GetNewWidget(this));
             }
         }
 
@@ -92,13 +95,13 @@
             int modules = 5;
             for (int i = 0; i < modules; i++)
             {
-                Modules.Add(CommonFuncs.GetNewModule(this));
+                Modules.Add(Module.GetNewModule(rng, this));
             }
 
             int widgets = 5;
             for (int i = 0; i < widgets; i++)
             {
-                Widgets.Add(CommonFuncs.GetNewWidget(rng, this));
+                Widgets.Add(Widget.GetNewWidget(rng, this));
             }
         }
 
@@ -123,7 +126,7 @@
 
             if (!serial.Any(c => serialLetters.Contains(c)))
             {
-                serial.Insert(CommonFuncs.rng.Next(5), serialLetters.GetRandomElement().ToString());
+                serial.Insert(SharedRng.Next(5), serialLetters.GetRandomElement().ToString());
             }
             else
             {
@@ -164,7 +167,7 @@
         /// <summary>
         /// Gets a value indicating whether the conditions for the bomb to explode have been met.
         /// </summary>
-        public bool IsExploded => Time < 0 || Strikes >= StrikeLimit;
+        public bool ShouldExplode => Time < 0 || Strikes >= StrikeLimit;
 
         public bool IsSolved => !Modules.Any(m => !m.IsSolved);
 

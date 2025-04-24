@@ -17,7 +17,7 @@ namespace NobodyExplodesDotNet.Types.Widgets
         {
             Owner = bomb;
             Label = CommonFuncs.RandomEnumValue<IndicatorLabel>();
-            IsLit = CommonFuncs.rng.Next(2) == 0;
+            IsLit = CommonFuncs.SharedRng.Next(2) == 0;
             while (Owner.IndicatorWidgets.Any(i => i.Label == Label))
             {
                 Label = CommonFuncs.RandomEnumValue<IndicatorLabel>();

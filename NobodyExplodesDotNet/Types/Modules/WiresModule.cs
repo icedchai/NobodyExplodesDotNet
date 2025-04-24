@@ -19,7 +19,7 @@
         public WiresModule(Bomb bomb)
         {
             Owner = bomb;
-            int wiresLength = CommonFuncs.rng.Next(3, 7);
+            int wiresLength = CommonFuncs.SharedRng.Next(3, 7);
             for (int i = 0; i < wiresLength; i++)
             {
                 Wires.Add(new Wire());

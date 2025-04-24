@@ -78,7 +78,7 @@
         public KeypadModule(Bomb bomb)
         {
             Owner = bomb;
-            columnIndex = CommonFuncs.rng.Next(columns.Count);
+            columnIndex = CommonFuncs.SharedRng.Next(columns.Count);
             for (int i = 0; i < 4; i++)
             {
                 Buttons += Column.Where(c => !Buttons.Contains(c)).GetRandomElement();
